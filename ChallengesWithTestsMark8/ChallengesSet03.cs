@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
 
 namespace ChallengesWithTestsMark8
 {
@@ -7,47 +9,82 @@ namespace ChallengesWithTestsMark8
     {
         public bool ArrayContainsAFalse(bool[] vals)
         {
-            throw new NotImplementedException();
+            bool b = vals.Contains(false);
+            return b;
         }
 
         public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
         {
-            throw new NotImplementedException();
+            if(numbers == null)
+            { return false; }
+            return (numbers.Sum() % 2 != 0);
         }
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            throw new NotImplementedException();
+            int xUp = 0;
+            int yLow = 0;
+            int zNum = 0;
+            foreach (char c in password)
+            {
+                if (Char.IsUpper(c) == true)
+                { 
+                    xUp++;
+                }
+                if (Char.IsLower(c) == true)
+                { 
+                    yLow++;
+                }
+                if (Char.IsNumber(c) == true)
+                {
+                    zNum++;
+                }
+
+            }
+            return (xUp > 0 && yLow > 0 && zNum > 0);
         }
 
         public char GetFirstLetterOfString(string val)
         {
-            throw new NotImplementedException();
+            var x = val.Substring(0, 1);
+            return Convert.ToChar(x);
         }
 
         public char GetLastLetterOfString(string val)
         {
-            throw new NotImplementedException();
+            var x = val.Substring(val.Length -1 , 1);
+            return Convert.ToChar(x);
         }
 
         public decimal Divide(decimal dividend, decimal divisor)
         {
-            throw new NotImplementedException();
+            return (divisor == 0) ? 0 : dividend / divisor;
         }
 
         public int LastMinusFirst(int[] nums)
         {
-            throw new NotImplementedException();
+            var x = nums.Last();
+            var y = nums.First();
+            return x - y;
         }
 
         public int[] GetOddsBelow100()
         {
-            throw new NotImplementedException();
+            List<int> odds = new List<int>();
+            for (int i = 0; i < 100; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    odds.Add(i);
+                }
+            }
+            return odds.ToArray();
+
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-            throw new NotImplementedException();
+            words.Select(x => x.ToUpper()).ToArray();
         }
     }
 }
