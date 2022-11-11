@@ -56,10 +56,7 @@ namespace ChallengesWithTestsMark8
             return Convert.ToChar(x);
         }
 
-        public decimal Divide(decimal dividend, decimal divisor)
-        {
-            return (divisor == 0) ? 0 : dividend / divisor;
-        }
+        public decimal Divide(decimal dividend, decimal divisor) => (divisor == 0) ? 0 : dividend / divisor;
 
         public int LastMinusFirst(int[] nums)
         {
@@ -84,7 +81,9 @@ namespace ChallengesWithTestsMark8
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-            words.Select(x => x.ToUpper()).ToArray();
+            //for(int i = 0; i < words.Length; i++)
+            //{
+            //    words[i] = word[i]          }
         }
     }
 }
