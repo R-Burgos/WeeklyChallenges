@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ChallengesWithTestsMark8
 {
@@ -6,47 +8,110 @@ namespace ChallengesWithTestsMark8
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            var even = 0;
+            var odd = 0;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 2 == 0)
+                {
+                    even += numbers[i];
+                }
+                else
+                { 
+                    odd += numbers[i];
+                }
+            }
+            return even - odd;
         }
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
-            throw new NotImplementedException();
+            string[] strings = new string[] { str1, str2, str3, str4};
+            Array.Sort(strings);
+            return strings[0].Length;
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
-            throw new NotImplementedException();
+            int[] numbers = new int[] { number1, number2, number3, number4 };
+            Array.Sort(numbers);
+            return numbers[0];
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            biz.Name = "TrueCoders";
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            return (sideLength1 + sideLength2 > sideLength3 && sideLength1 + sideLength3 > sideLength2 && sideLength2 + sideLength3 > sideLength1);
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            var x = 0.0;
+            return double.TryParse(input, out x);
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            var n = 0;
+            var x = 0;
+            for (int i = 0; i < objs.Length; i++)
+            {
+                if (objs[i] == null)
+                {
+                    n++;
+                }
+                else
+                { 
+                    x++;
+                }
+            }
+            return n > x;
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null)
+            {
+                return 0;
+            }
+            int[] evens = numbers.Where(x => x % 2 == 0).ToArray();
+            double avg = 0.0;
+            double sum = 0.0;
+            double count = evens.Length;
+            for (int i = 0; i < evens.Length; i++)
+            {
+                sum += evens[i];
+            }
+
+            if (evens.Length <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                avg = sum / count;
+                return avg;
+            }
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            if (number == 0)
+            {
+                return 1;
+            }
+
+            var result = 1;
+            while (number != 1)
+            {
+                result = result * number;
+                number = number - 1;
+            }
+            return result;
         }
     }
 }
